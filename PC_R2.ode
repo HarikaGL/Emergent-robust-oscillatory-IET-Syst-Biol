@@ -1,0 +1,87 @@
+################### bif parameters ####################
+par k3s = 0.56  
+## used in paper 
+par v4 = 1.5    
+################### Parameters #############################
+par v1 = 4.6
+par v1L = 3
+par v2A = 1.3
+par v2B = 1.5
+par v2L = 5
+par v3 = 1
+#par v4 = 1.5
+par k1L = 0.53
+par k1D = 0.21
+par k2s = 0.35
+#par k3s = 0.56
+par k4s = 0.57
+par p1 = 0.76
+par p1L = 0.42
+par p2 = 1
+par p3 = 0.64
+par p4 = 1
+par d1 = 0.68
+par d2D = 0.5
+par d2L = 0.3
+par d3D = 0.48
+par d3L = 0.78
+par d4D = 1.2
+par d4L = 0.38
+par K1 = 0.16
+par K2 = 1.2
+par K3 = 0.24
+par K4 = 0.23
+par K5 = 0.3
+par K6 = 0.46
+par K7 = 2
+par K8 = 0.36
+par K9 = 1.9
+par K10 = 1.9
+
+#par v5 = 0.10
+#par k5s = 0.14
+#par p5 = 0.62
+#par d5L = 4
+#par d5D = 0.52
+#par g1 = 0.01
+#par g2 = 0.12
+#par K11 = 0.21
+#par K12 = 0.56
+
+par L = 1
+#par L = 1
+#par D = 0
+par D = 0
+############################## Circadian ################################
+CLm' = (v1+(v1L*L*P))*(1/(1+((P97p/K1)^2))) - (((k1L*L)+(k1D*D))*CLm)
+CLp' = ((p1+p1L*L)*CLm)-(d1*CLp)
+P97m' = ((v2L*L*P)+ v2A)*(1/(1+((P51p/K4)^2)))-(k2s*P97m)
+P97p' = (p2*P97m)-(((d2D*D)+(d2L*L))*P97p)
+P51m' =  (v3*(1/(1+((CLp/K6)^2)))) - (k3s*P51m)
+P51p' = (p3*P51m)-(((d3D*D)+(d3L*L))*P51p)
+P' = (0.3*(1-P)*D)-(P*L)
+#PIFm' = v5*(1/(1+((ELp/K11)^2))) - (k5s*PIFm)
+#PIFp' = (p5*PIFm)-(((d5D*D)+(d5L*L))*PIFp)
+#HYP' = g1+(g2*((PIFp^2)/((K12^2)+(PIFp^2))))
+
+
+####################### SETTINGS. DO NOT CHANGE UNLESS IT'S NECESSARY
+
+#AUTO settings
+@ meth=Stiff,dtmax=0.5, dt=0.01, total=1500, maxstor=10000, bounds=10000
+@ dsmax=.05, dsmin=.01, ds=.05, ntst=30, nmax=20000, npr=1000, 
+@ parmin=0, parmax=200
+@ autoxmin=0, autoxmax=10, autoymin=0, autoymax=10
+
+
+
+
+done
+
+
+
+
+
+
+
+
